@@ -1,3 +1,5 @@
+// src/App.js
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -12,10 +14,11 @@ import ProfilePage from './pages/ProfilePage';
 // Components
 import Header from './components/Common/Header';
 import ProtectedRoute from './components/Common/ProtectedRoute';
+import Footer from './components/Common/Footer';
+import NotFound from './components/Common/NotFound';
 
 // Context
 import { AuthProvider } from './contexts/AuthContext';
-import Footer from './components/Common/Footer';
 
 function App() {
   return (
@@ -42,9 +45,11 @@ function App() {
                 </ProtectedRoute>
               } 
             />
+            {/* Route for 404 */}
+            <Route path="*" element={<NotFound />} /> {/* Render NotFound component */}
           </Routes>
           <ToastContainer />
-          <Footer/>
+          <Footer />
         </div>
       </Router>
     </AuthProvider>
