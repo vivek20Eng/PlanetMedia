@@ -15,6 +15,7 @@ import ProtectedRoute from './components/Common/ProtectedRoute';
 
 // Context
 import { AuthProvider } from './contexts/AuthContext';
+import Footer from './components/Common/Footer';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
             />
           </Routes>
           <ToastContainer />
+          <Footer/>
         </div>
       </Router>
     </AuthProvider>

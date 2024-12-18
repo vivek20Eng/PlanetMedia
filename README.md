@@ -1,3 +1,6 @@
+![Project Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
+## 🌐 Live link: [Live Demo](https://planet-media.vercel.app/auth)
+
 # 🛒 Buy and Sell Platform
 
 ## 📝 Project Overview
@@ -45,7 +48,7 @@ A comprehensive Buy and Sell platform built with React.js, allowing users to reg
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/buy-and-sell-platform.git
+git clone https://github.com/vivek20Eng/PlanetMedia.git
 ```
 
 2. Navigate to project directory
@@ -61,7 +64,7 @@ npm install
 4. Create `.env` file
 ```bash
 REACT_APP_API_BASE_URL=https://ads.planetmedia.app
-REACT_APP_API_KEY=your-api-key
+REACT_APP_API_KEY=a6a76927-6234-4bfe-98c1-c81b9e5f9f44
 ```
 
 5. Start the development server
@@ -132,7 +135,6 @@ buy-and-sell-platform/
 | Script | Description |
 |--------|-------------|
 | `npm start` | Runs the app in development mode |
-| `npm test` | Launches the test runner |
 | `npm run build` | Builds the app for production |
 
 ## 🔒 Authentication Flow
@@ -158,9 +160,9 @@ buy-and-sell-platform/
 
 ## 📞 Contact
 
-Your Name - your.email@example.com
+Vivek - Vivek20sv@gmail.com
 
-Project Link: [https://github.com/yourusername/buy-and-sell-platform](https://github.com/yourusername/buy-and-sell-platform)
+Project Link: [https://github.com/vivek20Eng/PlanetMedia](https://github.com/vivek20Eng/PlanetMedia)
 
 ## 🙏 Acknowledgements
 
@@ -171,4 +173,4 @@ Project Link: [https://github.com/yourusername/buy-and-sell-platform](https://gi
 
 ---
 
-🌟 Don't forget to star the repository if you find it helpful! 🌟
+🌟 Don't forget to star the repository! 🌟
