@@ -4,6 +4,46 @@ import { getUser } from "../utils/storage";
 import phone from "../assets/icons/phone.svg";
 import location from "../assets/icons/location.svg";
 import letter from "../assets/icons/letter.svg";
+import ProfileSkeletonLoader from "../components/Common/ProfileSkeletonLoader";
+import AdvertisementList from "./AdvertisementList";
+
+// mockAdvertisementApi.js
+export const ads = [
+  {
+    id: 1,
+    title: "Luxury couple apartment",
+    price: 124.80,
+    description: "Modern luxury apartment perfect for couples. Features high-end amenities and stunning city views.",
+    image: "/api/placeholder/200/150",
+    location: "Dallas, Texas"
+  },
+  {
+    id: 2,
+    title: "Downtown Studio Loft",
+    price: 89.99,
+    description: "Cozy studio loft in the heart of downtown. Recently renovated with modern fixtures.",
+    image: "/api/placeholder/200/150",
+    location: "Austin, Texas"
+  },
+  {
+    id: 3,
+    title: "Seaside Villa",
+    price: 299.99,
+    description: "Beautiful beachfront property with panoramic ocean views and private access to the beach.",
+    image: "/api/placeholder/200/150",
+    location: "Miami, Florida"
+  },
+  {
+    id: 4,
+    title: "Mountain Retreat Cabin",
+    price: 156.50,
+    description: "Rustic cabin surrounded by nature. Perfect for weekend getaways and outdoor enthusiasts.",
+    image: "/api/placeholder/200/150",
+    location: "Denver, Colorado"
+  }
+];
+
+
 
 const MyAccount = () => {
   const [profile, setProfile] = useState(null);
@@ -35,11 +75,8 @@ const MyAccount = () => {
   }, []);
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-gray-600">Loading...</div>
-      </div>
-    );
+    return <ProfileSkeletonLoader />;
+
   }
 
   if (error) {
@@ -52,6 +89,7 @@ const MyAccount = () => {
 
   // Fallback to localStorage data if API fails
   const userData = profile || getUser();
+  
 
   return (
     <div className="max-w-5xl mx-auto p-4">
@@ -141,6 +179,8 @@ const MyAccount = () => {
           </div>
         ))}
       </div>
+      <AdvertisementList ads={ads} />
+
     </div>
   );
 };

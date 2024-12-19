@@ -31,7 +31,7 @@ const Header = () => {
           )}
           <Link 
             to="/post-ad" 
-            className="bg-[#F50963] text-white px-6 py-4 rounded-full hover:bg-pink-700 transition-colors flex items-center gap-2 font-medium"
+            className="bg-[#F50963] text-white px-4 py-3 rounded-full hover:bg-pink-700 transition-colors flex items-center gap-2 font-medium"
           >
             Post Your Ad 
             <img src={arrowRight} alt="" className="w-5 h-5" />
