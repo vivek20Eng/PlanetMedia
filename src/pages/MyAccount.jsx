@@ -14,7 +14,7 @@ export const ads = [
     title: "Luxury couple apartment",
     price: 124.80,
     description: "Modern luxury apartment perfect for couples. Features high-end amenities and stunning city views.",
-    image: "/api/placeholder/200/150",
+    image: "https://picsum.photos/300",
     location: "Dallas, Texas"
   },
   {
@@ -22,7 +22,7 @@ export const ads = [
     title: "Downtown Studio Loft",
     price: 89.99,
     description: "Cozy studio loft in the heart of downtown. Recently renovated with modern fixtures.",
-    image: "/api/placeholder/200/150",
+    image: "https://picsum.photos/300",
     location: "Austin, Texas"
   },
   {
@@ -30,7 +30,7 @@ export const ads = [
     title: "Seaside Villa",
     price: 299.99,
     description: "Beautiful beachfront property with panoramic ocean views and private access to the beach.",
-    image: "/api/placeholder/200/150",
+    image: "https://picsum.photos/300",
     location: "Miami, Florida"
   },
   {
@@ -38,7 +38,7 @@ export const ads = [
     title: "Mountain Retreat Cabin",
     price: 156.50,
     description: "Rustic cabin surrounded by nature. Perfect for weekend getaways and outdoor enthusiasts.",
-    image: "/api/placeholder/200/150",
+    image: "https://picsum.photos/300",
     location: "Denver, Colorado"
   }
 ];
@@ -98,7 +98,7 @@ const MyAccount = () => {
         <div className="flex items-center justify-between mb-6 pb-2 border-b border-gray-500/20">
           <div className="flex items-center gap-4">
             <img
-              src="/api/placeholder/96/96"
+              src="https://picsum.photos/300"
               alt="Profile"
               className="w-16 h-16 rounded-full object-cover"
             />
