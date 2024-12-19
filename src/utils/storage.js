@@ -1,28 +1,32 @@
-// storage.js
-const API_KEY = import.meta.env.VITE_API_KEY;
-const TOKEN_KEY = 'jwt_token';
-const USER_KEY = 'user_info';
+// utils/storage.js
+export const getToken = () => localStorage.getItem('token');
+export const setToken = (token) => localStorage.setItem('token', token);
+export const getApiKey = () => import.meta.env.VITE_API_KEY;
 
-export const getApiKey = () => API_KEY;
-
-export const setToken = (token) => {
-  localStorage.setItem(TOKEN_KEY, token);
-};
-
-export const getToken = () => {
-  return localStorage.getItem(TOKEN_KEY);
+export const getUser = () => {
+  try {
+    const userStr = localStorage.getItem('user');
+    return userStr ? JSON.parse(userStr) : null;
+  } catch (error) {
+    console.error('Error parsing user from localStorage:', error);
+    return null;
+  }
 };
 
 export const setUser = (user) => {
-  localStorage.setItem(USER_KEY, JSON.stringify(user));
-};
-
-export const getUser = () => {
-  const user = localStorage.getItem(USER_KEY);
-  return user ? JSON.parse(user) : null;
+  try {
+    localStorage.setItem('user', JSON.stringify(user));
+  } catch (error) {
+    console.error('Error storing user in localStorage:', error);
+  }
 };
 
 export const clearStorage = () => {
-  localStorage.removeItem(TOKEN_KEY);
-  localStorage.removeItem(USER_KEY);
+  try {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  } catch (error) {
+    console.error('Error clearing localStorage:', error);
+  }
 };
+

@@ -1,124 +1,86 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { authService } from "../../services/authService";
-import { useAuth } from "../../contexts/AuthContext";
+// src/components/Auth/Login.jsx
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { authService } from '../../services/authService';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
+    email: '',
+    password: ''
   });
+  
   const navigate = useNavigate();
   const { login } = useAuth();
 
-  // Dummy user credentials
-  const DUMMY_CREDENTIALS = {
-    username: "testuser",
-    password: "password123",
-    userId: "12345",
-    email: "testuser@example.com",
-    name: "Test User",
-  };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
+    setFormData(prev => ({
+      ...prev,
+      [name]: value.trim()
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      // Check if credentials match dummy user
-      if (
-        formData.username === DUMMY_CREDENTIALS.username &&
-        formData.password === DUMMY_CREDENTIALS.password
-      ) {
-        // Simulate successful login with dummy user data
-        const userData = {
-          id: DUMMY_CREDENTIALS.userId,
-          username: DUMMY_CREDENTIALS.username,
-          email: DUMMY_CREDENTIALS.email,
-          name: DUMMY_CREDENTIALS.name,
-          token: "dummy_token_" + Date.now(),
-        };
+    setIsLoading(true);
 
-        login(userData);
-        toast.success("Login Successful!");
-        navigate("/dashboard");
-      } else {
-        // Attempt regular login if not dummy credentials
-        const userData = await authService.login(formData);
-        login(userData);
-        toast.success("Login Successful!");
-        navigate("/dashboard");
-      }
+    try {
+      const response = await authService.login(formData);
+      login(response);
+      toast.success('Login successful!');
+      navigate('/dashboard');
     } catch (error) {
-      toast.error(error.message || "Login Failed");
+      toast.error(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  // Quick login button for dummy user
-  const handleQuickLogin = () => {
-    setFormData({
-      username: DUMMY_CREDENTIALS.username,
-      password: DUMMY_CREDENTIALS.password,
-    });
-  };
-
   return (
-    <div className=" flex justify-center bg-gradient-to-r">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-xl">
-        <h2 className="text-3xl font-extrabold text-center text-indigo-600 mb-6">
-          Sign In
-        </h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              value={formData.username}
-              onChange={handleChange}
-              className="appearance-none rounded-lg w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent transition duration-200"
-              required
-            />
-          </div>
-          <div>
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-              className="appearance-none rounded-lg w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent transition duration-200"
-              required
-            />
-          </div>
-          <div>
-            <button
-              type="submit"
-              className="w-full py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
-            >
-              Login
-            </button>
-          </div>
-        </form>
-
-        {/* Quick Login Button */}
-        <div className="mt-4 text-center">
-          <button
-            onClick={handleQuickLogin}
-            className="w-full py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
-          >
-            Quick Login with Test User
-          </button>
-        </div>
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          Email
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          value={formData.email}
+          onChange={handleChange}
+          disabled={isLoading}
+        />
       </div>
-    </div>
+
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+          Password
+        </label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          required
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          value={formData.password}
+          onChange={handleChange}
+          disabled={isLoading}
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={isLoading}
+        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
+        {isLoading ? 'Signing in...' : 'Sign in'}
+      </button>
+    </form>
   );
 };
 
