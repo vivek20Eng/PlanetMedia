@@ -12,7 +12,7 @@ const PlatformHero = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
         {/* Left Content */}
         <div className="space-y-6 relative">
-        <div className="absolute z-1 b">
+        <div className="absolute z-1 mt-16 left-0 -ml-[8em]">
         <img
                 src={BannerHeading}
                 alt="Banner Heading"
