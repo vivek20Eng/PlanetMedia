@@ -50,7 +50,7 @@ const Register = () => {
       const response = await authService.register(formData);
       login(response);
       toast.success('Registration successful!');
-      navigate('/dashboard');
+      navigate('/myaccound');
     } catch (error) {
       toast.error(error.message);
     } finally {

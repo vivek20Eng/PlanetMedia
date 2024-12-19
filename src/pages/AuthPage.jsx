@@ -60,7 +60,7 @@ const AuthPage = () => {
       
       login(response);
       toast.success(`${isLogin ? 'Login' : 'Registration'} successful!`);
-      navigate('/dashboard');
+      navigate('/myaccount');
     } catch (error) {
       toast.error(error.message);
     } finally {

@@ -51,4 +51,25 @@ api.interceptors.response.use(
   }
 );
 
+// Profile endpoints
+export const profileApi = {
+  getProfile: () => api.get('/api/profile'),
+  updateProfile: (data) => api.put('/api/profile', data),
+};
+
+// Advertisement endpoints
+export const advertisementApi = {
+  getAll: () => api.get('/api/advertisements'),
+  getById: (id) => api.get(`/api/advertisements/${id}`),
+  create: (data) => api.post('/api/advertisements', data),
+  update: (id, data) => api.put(`/api/advertisements/${id}`, data),
+  delete: (id) => api.delete(`/api/advertisements/${id}`),
+};
+
+// Authentication endpoints
+export const authApi = {
+  login: (credentials) => api.post('/api/auth/local', credentials),
+  register: (userData) => api.post('/api/auth/local/register', userData),
+};
+
 export default api;

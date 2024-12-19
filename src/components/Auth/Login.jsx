@@ -31,7 +31,7 @@ const Login = () => {
       const response = await authService.login(formData);
       login(response);
       toast.success('Login successful!');
-      navigate('/dashboard');
+      navigate('/myaccount');
     } catch (error) {
       toast.error(error.message);
     } finally {
