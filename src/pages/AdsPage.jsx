@@ -1,8 +1,11 @@
 import React from 'react'
+import AdvertisementList from './AdvertisementList'
 
 function AdsPage() {
   return (
-    <div>AdsPage</div>
+    <>
+    <AdvertisementList/>
+    </>
   )
 }
 

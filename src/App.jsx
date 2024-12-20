@@ -7,7 +7,7 @@ import { SkeletonTheme } from 'react-loading-skeleton';
 // Pages
 import HomePage from './pages/HomePage';
 import AuthPage from './pages/AuthPage';
-import ProfilePage from './pages/ProfilePage';
+import ProfilePage from './pages/ProfileForm';
 import MyAccount from './pages/MyAccount';
 
 import AdsPage from './pages/AdsPage';
