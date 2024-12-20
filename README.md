@@ -74,54 +74,7 @@ npm start
 
 ## 📁 Project Structure
 
-```
-buy-and-sell-platform/
-│
-├── public/
-│   ├── index.html
-│   └── favicon.ico
-│
-├── src/
-│   ├── components/
-│   │   ├── Auth/
-│   │   │   ├── Login.js
-│   │   │   └── Register.js
-│   │   ├── Advertisement/
-│   │   │   ├── AdvertisementList.js
-│   │   │   ├── AdvertisementCreate.js
-│   │   │   └── AdvertisementDetail.js
-│   │   ├── Profile/
-│   │   │   ├── ProfileView.js
-│   │   │   └── ProfileEdit.js
-│   │   └── Common/
-│   │       ├── Header.js
-│   │       └── ProtectedRoute.js
-│   │
-│   ├── pages/
-│   │   ├── HomePage.js
-│   │   ├── DashboardPage.js
-│   │   ├── AuthPage.js
-│   │   └── ProfilePage.js
-│   │
-│   ├── services/
-│   │   ├── authService.js
-│   │   ├── advertisementService.js
-│   │   └── profileService.js
-│   │
-│   ├── utils/
-│   │   ├── api.js
-│   │   └── storage.js
-│   │
-│   ├── contexts/
-│   │   └── AuthContext.js
-│   │
-│   ├── App.js
-│   ├── index.js
-│   └── App.css
-│
-├── package.json
-└── README.md
-```
+
 
 ## 🔑 Environment Variables
 
