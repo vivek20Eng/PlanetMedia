@@ -6,6 +6,7 @@ import { authService } from '../../services/authService';
 import { useAuth } from '../../contexts/AuthContext';
 
 const Login = () => {
+  console.log("testing---")
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
