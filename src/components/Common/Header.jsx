@@ -38,19 +38,19 @@ const Header = () => {
           </Link>
           {isAuthenticated && (
             <>
-              <Link to="/dashboard" className="text-gray-600 hover:text-gray-900 flex items-center gap-2">
+              {/* <Link to="/dashboard" className="text-gray-600 hover:text-gray-900 flex items-center gap-2">
                 Dashboard
-              </Link>
+              </Link> */}
               <Link to="/profile" className="text-gray-600 hover:text-gray-900 flex items-center gap-2">
                 <img src={person} alt="" className="w-5 h-5" />
                 Profile
               </Link>
-              <button 
+              {/* <button 
                 onClick={handleLogout} 
                 className="text-gray-600 hover:text-gray-900 flex items-center gap-2"
               >
                 Logout
-              </button>
+              </button> */}
             </>
           )}
         </div>
