@@ -2,7 +2,7 @@ import React from 'react';
 import hero1 from '../../assets/images/hero-1.png'
 import hero2 from '../../assets/images/hero-2.png'
 import HomeShape from '../../assets/icons/homeShape.svg'
-import BannerHeading from '../../assets/icons/BannerHeading.svg'
+import BannerHeading from '../../assets/icons/bannerHeading.svg'
 import DecorativeShape from '../../assets/icons/decorativeShape.svg'
 import shape1 from '../../assets/images/shape-1.png'
 
