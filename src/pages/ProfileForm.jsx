@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const ProfileForm = () => {
+  const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -10,6 +13,28 @@ const ProfileForm = () => {
     location: '',
     contactNumber: ''
   });
+
+  // Simulate data fetching
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          username: '',
+          photo: '',
+          location: '',
+          contactNumber: ''
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfile();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,6 +49,25 @@ const ProfileForm = () => {
     console.log(formData);
     // Handle form submission
   };
+
+  if (loading) {
+    return (
+      <div className="max-w-xl mx-auto p-6">
+        <div className="space-y-4">
+          {/* Skeleton for each form field */}
+          {[...Array(7)].map((_, index) => (
+            <div key={index}>
+              <Skeleton height={20} width={120} className="mb-1" />
+              <Skeleton height={40} className="rounded-lg" />
+            </div>
+          ))}
+          
+          {/* Skeleton for submit button */}
+          <Skeleton height={48} className="rounded-full" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-xl mx-auto p-6">

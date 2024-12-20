@@ -1,13 +1,34 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const PostAdPage = () => {
+  const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     adTitle: '',
     price: '',
     description: '',
     photo: ''
   });
+
+  //  data fetching
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        setFormData({
+          adTitle: '',
+          price: '',
+          description: '',
+          photo: ''
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +43,41 @@ const PostAdPage = () => {
     console.log(formData);
     // Handle form submission
   };
+
+  if (loading) {
+    return (
+      <div className="max-w-2xl mx-auto p-6">
+        <div className="space-y-6">
+          {/* Skeleton for Ad Title */}
+          <div>
+            <Skeleton height={20} width={80} className="mb-1" />
+            <Skeleton height={40} className="rounded-lg" />
+          </div>
+
+          {/* Skeleton for Price */}
+          <div>
+            <Skeleton height={20} width={60} className="mb-1" />
+            <Skeleton height={40} className="rounded-lg" />
+          </div>
+
+          {/* Skeleton for Description */}
+          <div>
+            <Skeleton height={20} width={100} className="mb-1" />
+            <Skeleton height={120} className="rounded-lg" />
+          </div>
+
+          {/* Skeleton for Photo */}
+          <div>
+            <Skeleton height={20} width={70} className="mb-1" />
+            <Skeleton height={40} className="rounded-lg" />
+          </div>
+
+          {/* Skeleton for Submit Button */}
+          <Skeleton height={48} className="rounded-full" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-2xl mx-auto p-6">
