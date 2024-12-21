@@ -9,7 +9,7 @@ const HomePage = () => {
     <div className="">
       <PlatformHero/>
       <FreshRecommendations/>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 };
